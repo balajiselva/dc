@@ -7,15 +7,3 @@ services:
     restart: unless-stopped
     expose:
       - 7000
-    env_file:
-      - .env
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.aiolists.rule=Host(`${AIOLISTS_HOSTNAME?}`)"
-      - "traefik.http.routers.aiolists.entrypoints=websecure"
-      - "traefik.http.routers.aiolists.tls.certresolver=letsencrypt"
-      - "traefik.http.routers.aiolists.middlewares=authelia@docker"
-    profiles:
-      - aiolists
-      - stremio
-      - all
